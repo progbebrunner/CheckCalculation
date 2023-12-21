@@ -30,13 +30,13 @@ class MainActivity : AppCompatActivity() {
     private var min_sec = 99999.0
     private var time = 0.0
 
-    var wins = 0
-    var loses = 0
+    var correctAnsw = 0
+    var wrongAnsw = 0
     var allExamples = 0
     var percentage = 0.0
     var choice = true
 
-    fun checkResult(operand:String,operatorOne:Int,operatorTwo:Int, playerResult: Int):Boolean
+    fun checkAnsw(operand:String, operatorOne:Int, operatorTwo:Int, playerResult: Int):Boolean
     {
         var result = 0
         when (operand){
@@ -95,19 +95,19 @@ class MainActivity : AppCompatActivity() {
     {
         if (choice)
         {
-            wins++
+            correctAnsw++
             allExamples++
             binding.NumberRigthTxt.setBackgroundColor(Color.GREEN)
         }
         else
         {
-            loses++
+            wrongAnsw++
             allExamples++
             binding.NumberWrongTxt.setBackgroundColor(Color.RED)
         }
-        percentage = (wins/allExamples*100).toDouble()
-        binding.NumberRigthTxt.text = wins.toString()
-        binding.NumberWrongTxt.text = loses.toString()
+        percentage = (correctAnsw/allExamples*100).toDouble()
+        binding.NumberRigthTxt.text = correctAnsw.toString()
+        binding.NumberWrongTxt.text = wrongAnsw.toString()
         binding.AllExamplesTxt.text = allExamples.toString()
         binding.TxtPercent.text = ("%.2f".format(percentage)).toString()  + "%"
         binding.BtFalse.isEnabled = false
@@ -120,19 +120,19 @@ class MainActivity : AppCompatActivity() {
     {
         if (!choice)
         {
-            wins++
+            correctAnsw++
             allExamples++
             binding.NumberRigthTxt.setBackgroundColor(Color.GREEN)
         }
         else
         {
-            loses++
+            wrongAnsw++
             allExamples++
             binding.NumberWrongTxt.setBackgroundColor(Color.RED)
         }
-        percentage = (wins/allExamples*100).toDouble()
-        binding.NumberRigthTxt.text = wins.toString()
-        binding.NumberWrongTxt.text = loses.toString()
+        percentage = (correctAnsw/allExamples*100).toDouble()
+        binding.NumberRigthTxt.text = correctAnsw.toString()
+        binding.NumberWrongTxt.text = wrongAnsw.toString()
         binding.AllExamplesTxt.text = allExamples.toString()
         binding.TxtPercent.text = ("%.2f".format(percentage)).toString()  + "%"
         binding.BtFalse.isEnabled = false
